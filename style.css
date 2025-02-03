@@ -275,7 +275,7 @@ footer.visible {
   .breadcrumbs {
     position: fixed;
     top: 42%;
-    right: 10px;
+    right: 0px;
   }
 
   .tentang,
@@ -285,7 +285,7 @@ footer.visible {
   }
 
   .anggota-item {
-    width: 100%;
+    width: 94.5%;
     padding: 10px;
   }
 
@@ -296,6 +296,12 @@ footer.visible {
 
   .pagination button {
     padding: 8px 12px;
+  }
+
+  #search-input {
+    width: 95.5%;
+    font-size: 14px;
+    padding: 8px;
   }
 }
 
