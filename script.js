@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const footer = document.querySelector("footer");
   const breadcrumbs = document.querySelectorAll(".breadcrumbs li");
   const searchInput = document.getElementById("search-input");
+  const tentangSection = document.getElementById("tentang");
+  const anggotaSection = document.getElementById("anggota");
 
   let lastScrollTop = 0;
 
@@ -158,6 +160,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function checkVisibilityOnScroll() {
+    const sectionsToAnimate = [tentangSection, anggotaSection];
+
+    sectionsToAnimate.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionBottom = section.getBoundingClientRect().bottom;
+      const windowHeight = window.innerHeight;
+
+      // Jika elemen berada dalam jangkauan tampilan
+      if (sectionTop < windowHeight && sectionBottom > 0) {
+        section.classList.add("visible"); // Tambahkan animasi
+      }
+    });
+  }
+
   window.addEventListener("scroll", function () {
     const currentScrollTop = window.scrollY;
 
@@ -174,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.addEventListener("load", function () {
+    checkVisibilityOnScroll();
     checkVisibleSections();
     activateBreadcrumb();
     header.classList.add("visible");
