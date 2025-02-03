@@ -1,0 +1,265 @@
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.breadcrumbs {
+  position: fixed;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  padding: 10px;
+}
+
+.breadcrumbs ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.breadcrumbs ul::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0;
+  bottom: 26px;
+  width: 4px;
+  background-color: #333; /* Warna garis vertikal */
+}
+
+.breadcrumbs li {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.breadcrumbs li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #333; /* Warna bulat */
+}
+
+.breadcrumbs li.active::before {
+  background-color: #f00; /* Warna bulat aktif (misalnya merah) */
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #333; /* Warna teks */
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* Animasi Header: Muncul dari Atas ke Bawah */
+
+header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animasi Breadcrumbs: Muncul dari Kanan ke Kiri */
+.breadcrumbs {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.breadcrumbs.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tentang,
+.anggota {
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.anggota h2,
+.tentang h2 {
+  margin-top: 0;
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.anggota-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 97.5%;
+}
+
+.anggota-item.focused {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling gambar anggota */
+.anggota-item img {
+  max-width: 80px;
+  height: 80px; /* Memastikan gambar berbentuk bulat dengan ukuran tetap */
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-bottom: 15px; /* Memberi jarak antara gambar dan teks */
+}
+
+.anggota-item h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.anggota-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555; /* Membuat teks lebih lembut */
+}
+
+/* Styling untuk teks Alasan */
+.anggota-item p:last-child {
+  font-style: italic; /* Memberikan sentuhan berbeda pada alasan */
+  color: #888;
+}
+
+/* Menambahkan space pada bagian bawah untuk kontainer anggota */
+#anggota-list {
+  margin-bottom: 50px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f4f4f4;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.social-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  gap: 15px;
+}
+
+.social-links li {
+  display: inline-block;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff; /* Warna hover default */
+}
+
+.social-links a:hover .fa-facebook-f {
+  color: #3b5998; /* Warna hover Facebook */
+}
+
+.social-links a:hover .fa-twitter {
+  color: #1da1f2; /* Warna hover Twitter */
+}
+
+.social-links a:hover .fa-instagram {
+  color: #e4405f; /* Warna hover Instagram */
+}
+
+.social-links a:hover .fa-youtube {
+  color: #ff0000; /* Warna hover YouTube */
+}
+
+.breadcrumbs li:last-child::after {
+  display: none; /* Hilangkan garis pada elemen terakhir */
+}
+
+.breadcrumbs li:last-child::before {
+  top: -10px; /* Atur posisi bulat terakhir */
+}
