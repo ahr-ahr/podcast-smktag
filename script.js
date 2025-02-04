@@ -37,10 +37,28 @@ document.addEventListener("DOMContentLoaded", function () {
       jurusan: "Rekayasa Perangkat Lunak",
       divisi: "IT",
     },
+    {
+      nama: "Ahmad Haikal Rizal",
+      alasan: "Alasan bergabung: Saya ingin...",
+      foto: "image/ahr3.jpg",
+      umur: 17,
+      kelas: "XI",
+      jurusan: "Rekayasa Perangkat Lunak",
+      divisi: "IT",
+    },
+    {
+      nama: "Ahmad Haikal Rizal",
+      alasan: "Alasan bergabung: Saya ingin...",
+      foto: "image/ahr3.jpg",
+      umur: 17,
+      kelas: "XI",
+      jurusan: "Rekayasa Perangkat Lunak",
+      divisi: "IT",
+    },
     // Tambahkan anggota lain di sini
   ];
 
-  const itemsPerPage = 2;
+  const itemsPerPage = 4;
   let currentPage = 1;
   const anggotaContainer = document.getElementById("anggota-list");
   const paginationContainer = document.getElementById("pagination");
@@ -59,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const anggotaFoto = document.createElement("img");
       anggotaFoto.src = anggota.foto;
       anggotaFoto.alt = "Foto Anggota";
+      anggotaFoto.loading = "lazy";
       anggotaFoto.style.width = "80px";
       anggotaFoto.style.height = "80px";
       anggotaFoto.style.objectFit = "cover";
