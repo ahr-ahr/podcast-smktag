@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Character Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .custom-scrollbar {
+        /* Custom scrollbar styles */
+        scrollbar-width: thin; /* Firefox */
+        scrollbar-color: #ffcc00 #333; /* Firefox */
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px; /* Width of the scrollbar */
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #ffcc00; /* Color of the scrollbar handle */
+        border-radius: 10px; /* Rounded corners for the scrollbar handle */
+      }
+
+      .image-background {
+        background-image: url("../../image/ahr4.png"),
+          url("../../image/podcast-smktag.png"); /* Multiple background images */
+        background-size: cover, cover; /* First background covers, second adjusts to content */
+        background-position: center, center;
+        height: 700px;
+        position: relative;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .back-button i {
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-roboto">
+    <main class="bg-white">
+      <section class="relative flex">
+        <div class="absolute top-0 left-0 w-1/2 h-full bg-yellow-300"></div>
+        <div class="relative z-10 p-8 flex flex-col justify-center w-2/3">
+          <h1
+            class="text-4xl font-bold absolute top-0 left-1/2 transform -translate-x-1/2"
+          >
+            PODCAST SMKTAG
+          </h1>
+          <h2 class="text-4xl font-bold">Ahmad Haikal Rizal</h2>
+          <div class="flex items-center space-x-2 mt-2">
+            <i class="fas fa-microphone cursor-pointer" id="microphone-icon">
+            </i>
+            <span>
+              VN:
+              <span class="font-bold"> AHR </span>
+            </span>
+            <span class="bg-gray-200 text-black px-2 py-1 rounded">
+              ANGKATAN 1
+            </span>
+          </div>
+          <p class="mt-4 text-xl">Kelas: 11</p>
+          <p class="text-xl">Jurusan: Rekayasa Perangkat Lunak</p>
+          <p class="text-xl">Umur: 17</p>
+          <div class="mt-4">
+            <span class="bg-black text-white px-4 py-2 rounded-full">
+              Divisi IT
+            </span>
+          </div>
+        </div>
+
+        <!-- Image with quotes inside a container -->
+        <div class="relative w-full image-background">
+          <!-- Back Button -->
+          <div class="back-button">
+            <a href="../../index.html">
+              <i class="fas fa-arrow-left"></i> Back
+            </a>
+          </div>
+          <div
+            class="absolute bottom-4 left-4 text-white bg-opacity-50 bg-black p-4 rounded-md max-h-32 overflow-y-auto custom-scrollbar"
+          >
+            <p class="mb-4 alasan">
+              "Miss, it's time to get up. We're going to be late — Fine, just
+              one more minute. Just one. —Evelyn Chevalier"
+            </p>
+          </div>
+        </div>
+        <!-- Dropdown Button for Next and Prev -->
+        <div
+          class="absolute z-10 bottom-[-2.1rem] left-1/2 transform -translate-x-1/2"
+        >
+          <button
+            id="dropdown-button"
+            class="bg-yellow-500 text-white px-6 py-2 flex items-center justify-center"
+            style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%)"
+          >
+            <i class="fas fa-chevron-up mr-2 ml-2"></i>
+          </button>
+
+          <div
+            id="dropdown-menu"
+            class="hidden mt-2 w-[33rem] bg-white rounded-lg shadow-lg p-4 absolute z-10 top-[-8rem] right-[16rem]"
+          >
+            <!-- Next and Previous Buttons -->
+            <div class="flex justify-between items-center">
+              <button id="prev-button" class="px-4 py-2 text-black">
+                <i class="fas fa-arrow-left"></i> Previous
+              </button>
+              <a href="?nama=Ahmad Haikal Rizal">
+                <img
+                  src="../../image/ahr4.png"
+                  alt="Image"
+                  class="w-20 h-20 mx-4"
+                />
+              </a>
+              <a href="?nama=Nama Lain">
+                <img
+                  src="../../image/ahr4.png"
+                  alt="Ahmad Haikal Rizal"
+                  class="w-20 h-20 mx-4"
+                />
+              </a>
+
+              <a href="?nama=Sigma Lain">
+                <img
+                  src="../../image/ahr6.png"
+                  alt="Image"
+                  class="w-20 h-20 mx-4"
+                />
+              </a>
+              <button id="next-button" class="px-4 py-2 text-black">
+                Next <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Audio element for playing MP3 -->
+    <audio
+      id="audio-player"
+      src="./vn/PenyakiBlueYungKaiGila.mp3"
+      preload="auto"
+    ></audio>
+  </body>
+
+  <script>
+    const anggotaData = [
+      {
+        nama: "Ahmad Haikal Rizal",
+        kelas: "11",
+        jurusan: "Rekayasa Perangkat Lunak",
+        umur: "17",
+        divisi: "IT",
+        vn: "AHR",
+        angkatan: "1",
+        image: "../../image/ahr4.png",
+        vnAudio: "./vn/PenyakiBlueYungKaiGila.mp3",
+        alasan: `"Saya ingin Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum."`,
+      },
+      {
+        nama: "Nama Lain",
+        kelas: "12",
+        jurusan: "Teknik Jaringan",
+        umur: "18",
+        divisi: "Desain",
+        vn: "NL",
+        angkatan: "2",
+        image: "../../image/ahr5.png",
+        vnAudio: "./vn/ContohLain.mp3",
+        alasan: `"Saya suka desain dan ingin belajar bagaimana membuat konten visual yang menarik untuk podcast ini."`,
+      },
+      {
+        nama: "Sigma Lain",
+        kelas: "12",
+        jurusan: "Teknik Jaringan",
+        umur: "18",
+        divisi: "Desain",
+        vn: "NL",
+        angkatan: "2",
+        image: "../../image/ahr5.png",
+        vnAudio: "./vn/ContohLain.mp3",
+        alasan: `"Saya bergabung karena ingin mengasah keterampilan kreatif saya di dunia desain dan produksi media."`,
+      },
+    ];
+
+    function updateDetail(nama) {
+      const anggota = anggotaData.find((a) => a.nama === nama);
+      if (anggota) {
+        document.querySelector("h2.text-4xl.font-bold").textContent =
+          anggota.nama;
+        document.querySelector(".text-xl:nth-of-type(1)").textContent =
+          "Kelas: " + anggota.kelas;
+        document.querySelector(".text-xl:nth-of-type(2)").textContent =
+          "Jurusan: " + anggota.jurusan;
+        document.querySelector(".text-xl:nth-of-type(3)").textContent =
+          "Umur: " + anggota.umur;
+        document.querySelector(".bg-black.text-white").textContent =
+          "Divisi " + anggota.divisi;
+        document.querySelector("span.font-bold").textContent = anggota.vn;
+        document.querySelector(".bg-gray-200").textContent =
+          "ANGKATAN " + anggota.angkatan;
+        document.querySelector(
+          ".image-background"
+        ).style.backgroundImage = `url(${anggota.image}), url("../../image/podcast-smktag.png")`;
+        document.getElementById("audio-player").src = anggota.vnAudio;
+
+        // **Mengupdate hanya paragraf alasan**
+        const alasanElement = document.querySelector("p.alasan");
+        if (alasanElement) {
+          alasanElement.textContent =
+            anggota.alasan || "Alasan belum tersedia.";
+        }
+      }
+    }
+
+    // Ambil parameter dari URL
+    window.addEventListener("load", function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const namaAnggota = urlParams.get("nama");
+      if (namaAnggota) {
+        updateDetail(decodeURIComponent(namaAnggota));
+      }
+    });
+
+    // Ubah detail saat gambar diklik
+    document.querySelectorAll("#dropdown-menu img").forEach((img) => {
+      img.addEventListener("click", function () {
+        //event.stopPropagation();
+        const selectedSrc = img.getAttribute("src"); // Ambil src gambar
+
+        console.log("Gambar diklik:", selectedSrc); // Debugging: Cek apakah klik terdeteksi
+
+        const selectedAnggota = anggotaData.find((a) =>
+          selectedSrc.includes(a.image)
+        );
+
+        if (selectedAnggota) {
+          console.log("Ditemukan anggota:", selectedAnggota); // Debugging: Cek apakah data ditemukan
+
+          updateDetail(selectedAnggota.nama);
+
+          // Ubah URL tanpa reload halaman
+          window.history.pushState(
+            {},
+            "",
+            `?nama=${encodeURIComponent(selectedAnggota.nama)}`
+          );
+        } else {
+          console.log("⚠️ Data tidak ditemukan untuk gambar ini!");
+        }
+      });
+    });
+
+    // JavaScript for toggling the dropdown menu
+    const dropdownButton = document.getElementById("dropdown-button");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+    const dropdownIcon = dropdownButton.querySelector("i");
+
+    dropdownButton.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("hidden");
+
+      // Toggle the icon direction (up/down)
+      if (dropdownMenu.classList.contains("hidden")) {
+        dropdownIcon.classList.remove("fa-chevron-down");
+        dropdownIcon.classList.add("fa-chevron-up");
+      } else {
+        dropdownIcon.classList.remove("fa-chevron-up");
+        dropdownIcon.classList.add("fa-chevron-down");
+      }
+
+      // Adjust the position of the dropdown menu
+      if (dropdownMenu.classList.contains("hidden")) {
+        dropdownMenu.style.top = "-8rem"; // Position when hidden
+      } else {
+        dropdownMenu.style.top = "-8rem"; // Position when visible (up or down)
+      }
+    });
+
+    // JavaScript for playing the MP3 when microphone icon is clicked
+    const microphoneIcon = document.getElementById("microphone-icon");
+    const audioPlayer = document.getElementById("audio-player");
+
+    microphoneIcon.addEventListener("click", () => {
+      // Toggle play/pause on click
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    });
+  </script>
+</html>

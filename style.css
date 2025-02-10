@@ -138,19 +138,29 @@ header.visible {
   /* width: calc(33.333% - 20px); 3*/
   /* width: calc(50% - 20px); 2*/
   width: calc(25% - 20px);
+  align-items: stretch;
+  min-height: 200px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  text-align: left;
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.anggota-bg {
+  width: 150px;
+  height: 150px;
+  /* border-radius: 50%; */
+  background: url("image/podcast-smktag-no-bg.png") no-repeat center;
+  background-size: cover;
+  position: relative; /* Untuk menjadi dasar dari gambar */
 }
 
 .anggota-item.focused {
@@ -159,11 +169,20 @@ header.visible {
 }
 
 .anggota-item img {
-  max-width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-right: 20px;
-  margin-bottom: 15px;
+  position: relative;
+  width: 100px; /* Sesuaikan ukuran gambar */
+  height: 100px;
+  background-size: cover;
+  /* border-radius: 50%; */
+  position: absolute;
+  top: 30%; /* Naik ke atas agar berada di tengah */
+  left: 15%;
+  transform: translateX(-50%);
+  z-index: 2; /* Pastikan gambar di atas background */
+}
+
+.anggota-item .info {
+  flex: 1;
 }
 
 .anggota-item h3 {
@@ -312,7 +331,7 @@ footer.visible {
   }
 
   .anggota-item {
-    width: 94.5%;
+    width: 100%;
     padding: 10px;
   }
 
