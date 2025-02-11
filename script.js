@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
       nama: "Ahmad Haikal Rizal",
       alasan:
         "Alasan bergabung: Saya ingin Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.",
-      foto: "image/ahr1.jpg",
+      foto: "image/ahr5.png",
       umur: 17,
       kelas: "XI",
       jurusan: "Rekayasa Perangkat Lunak",
@@ -256,27 +256,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const episodes = [
     {
-      title: "Episode 1: Perkenalan",
+      number: 1,
+      title: "Perkenalan",
       desc: "Mengenal Podcast SMKTAG",
       link: "https://youtube.com/episode1",
     },
     {
-      title: "Episode 2: Belajar Digital",
+      number: 2,
+      title: "Belajar Digital",
       desc: "Bagaimana teknologi mempengaruhi pendidikan?",
       link: "https://spotify.com/episode2",
+    },
+    {
+      number: 3,
+      title: "Dunia Broadcasting",
+      desc: "Mengupas dunia penyiaran",
+      link: "https://youtube.com/episode3",
     },
   ];
 
   const episodeList = document.getElementById("episode-list");
-  episodes.forEach((episode) => {
-    const div = document.createElement("div");
-    div.classList.add("episode");
-    div.innerHTML = `
-        <h3>${episode.title}</h3>
-        <p>${episode.desc}</p>
-        <a href="${episode.link}" target="_blank">Dengarkan</a>
-    `;
-    episodeList.appendChild(div);
+  const searchInput2 = document.getElementById("search-episode");
+
+  function renderEpisodes(filteredEpisodes) {
+    episodeList.innerHTML = "";
+    filteredEpisodes.forEach((episode) => {
+      const div = document.createElement("div");
+      div.classList.add("episode");
+      div.innerHTML = `
+                <h3>Episode ${episode.number}: ${episode.title}</h3>
+                <p>${episode.desc}</p>
+                <a href="${episode.link}" target="_blank">Dengarkan</a>
+            `;
+      episodeList.appendChild(div);
+    });
+  }
+
+  // Tampilkan semua episode saat pertama kali dimuat
+  renderEpisodes(episodes);
+
+  // Event untuk pencarian
+  searchInput2.addEventListener("input", function () {
+    const query = searchInput2.value.toLowerCase();
+    const filteredEpisodes = episodes.filter(
+      (episode) =>
+        episode.title.toLowerCase().includes(query) ||
+        episode.number.toString().includes(query)
+    );
+    renderEpisodes(filteredEpisodes);
   });
 
   const faqItems = document.querySelectorAll(".faq-item");
