@@ -294,7 +294,7 @@ footer.visible {
 /* Animasi Tentang & Anggota */
 .tentang,
 .anggota {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(-50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
@@ -308,6 +308,187 @@ footer.visible {
 .anggota-item:hover {
   transform: scale(1.05);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Galeri Episode */
+#galeri {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input pencarian */
+#search-episode {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Daftar Episode */
+#episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Style tiap episode */
+.episode {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.episode:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.episode h3 {
+  margin: 0;
+  color: #222;
+}
+
+.episode p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.episode a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background: #ffcc00;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.episode a:hover {
+  background: #e6b800;
+}
+
+/* Container utama untuk kegiatan */
+#kegiatan {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Judul */
+#kegiatan h2 {
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+/* Grid layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Item dalam grid */
+.grid-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek hover */
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Gambar dalam grid */
+.grid-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Efek zoom gambar saat hover */
+.grid-item img:hover {
+  transform: scale(1.05);
+}
+
+/* Deskripsi kegiatan */
+.grid-item p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Container utama FAQ */
+#faq {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Judul FAQ */
+#faq h2 {
+  font-size: 24px;
+  text-align: center;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+/* Setiap item FAQ */
+.faq-item {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Efek hover pada FAQ */
+.faq-item:hover {
+  background: #f1f1f1;
+}
+
+/* Pertanyaan (h3) */
+.faq-item h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Jawaban (p) */
+.faq-item p {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+  display: none; /* Disembunyikan awalnya */
+}
+
+/* Efek dropdown */
+.faq-item.active p {
+  display: block;
 }
 
 /* Media Queries for responsiveness */

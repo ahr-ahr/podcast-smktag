@@ -253,4 +253,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   renderAnggotaList(anggotaList, currentPage);
+
+  const episodes = [
+    {
+      title: "Episode 1: Perkenalan",
+      desc: "Mengenal Podcast SMKTAG",
+      link: "https://youtube.com/episode1",
+    },
+    {
+      title: "Episode 2: Belajar Digital",
+      desc: "Bagaimana teknologi mempengaruhi pendidikan?",
+      link: "https://spotify.com/episode2",
+    },
+  ];
+
+  const episodeList = document.getElementById("episode-list");
+  episodes.forEach((episode) => {
+    const div = document.createElement("div");
+    div.classList.add("episode");
+    div.innerHTML = `
+        <h3>${episode.title}</h3>
+        <p>${episode.desc}</p>
+        <a href="${episode.link}" target="_blank">Dengarkan</a>
+    `;
+    episodeList.appendChild(div);
+  });
+
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      this.classList.toggle("active");
+    });
+  });
 });
