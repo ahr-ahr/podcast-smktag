@@ -314,3 +314,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+let index = 0;
+function moveSlide(direction) {
+  const slides = document.querySelectorAll(".carousel-slide");
+  const wrapper = document.querySelector(".carousel-wrapper");
+  index += direction;
+  if (index < 0) {
+    index = slides.length - 1;
+  } else if (index >= slides.length) {
+    index = 0;
+  }
+  wrapper.style.transform = `translateX(-${index * 100}%)`;
+}
